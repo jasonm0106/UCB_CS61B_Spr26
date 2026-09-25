@@ -123,6 +123,34 @@ public class IntListRequiredTests {
 
     @Test
     @Order(2)
+    @DisplayName("Test addFirst correctness")
+    public void testAddFirst() {
+        IntList L = of(1, 2, 3);
+        IntList expected = of(99, 1, 2, 3);
+        L.addFirst(99);
+
+        if (!checkEquals(L, expected)) {
+            String errorMessage = String.format("Expected addFirst to return %s but got %s", intListToString(expected), intListToString(L));
+            fail(errorMessage);
+        }
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("Test addFirst correctness")
+    public void testAddLast() {
+        IntList L = of(1, 2, 3);
+        IntList expected = of(1, 2, 3, 4);
+        L.addLast(4);
+
+        if (!checkEquals(L, expected)) {
+            String errorMessage = String.format("Expected addLast to return %s but got %s", intListToString(expected), intListToString(L));
+            fail(errorMessage);
+        }
+    }
+
+    @Test
+    @Order(4)
     @DisplayName("Test first five numbers")
     public void testFirstFiveNumbers() {
         // To avoid leaking the answer, we will just check that the sum and product
@@ -141,7 +169,7 @@ public class IntListRequiredTests {
     }
 
     @Test
-    @Order(3)
+    @Order(5)
     @DisplayName("Test middle number")
     public void testMiddleNumber() {
         // To avoid leaking the answer, we will just check that the number mod N is correct
